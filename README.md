@@ -1,2 +1,1 @@
-static-starter-template
-=======================
+#Static Starter Template
