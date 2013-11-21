@@ -1,0 +1,2 @@
+static-starter-template
+=======================
