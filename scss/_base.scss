@@ -6,12 +6,39 @@ body {
 	margin: 0;
 	padding: 0;
 }
+nav {
+	position: fixed;
+	width: 100%;
+	background: #fff;
+	top: 0;
+	left: 0;
+	ul {
+		list-style-type: none;
+		margin: 20px 0;
+		padding: 0;
+		font-size: 4em;
+		text-align: center;
+		li {
+			display: inline;
+			padding: 0 2%;
+			a {
+				text-decoration: none;
+				color: $teal;
+				@include single-transition(all, 0.2s, ease);
+				&:hover, &:active, &:focus {
+					border-bottom: 2px solid lighten($teal, 20%);
+					color: lighten($teal, 20%);
+				}
+			}
+		}
+	}
+}
 header {
 	background: #fff;
 	color: $teal;
 	text-align: center;
 	line-height: 1;
-	padding: 5%;
+	padding: 5% 0 0;
 	h1 {
 		font-size: 24em;
 		margin: 0;
@@ -25,20 +52,35 @@ h2 {
 	text-align: center;
 	margin: 0;
 }
+section {
+	margin-top: 25px;
+}
 article {
 	padding: 5% 10%;
 	p {
 		font-size: 4em;
 	}
 }
+img {
+	max-width: 100%;
+	height: auto;
+	margin: 0 auto;
+}
+figcaption {
+	text-align: center;
+	font-style: italic;
+}
 .first {
-	background: $gray;
+	background: #fff;
 	color: $teal;
+	padding-top: 0;
 	a {
-		color: $teal;
+		color: lighten($teal, 20%);
 		text-decoration: none;
-		border-bottom: 2px dotted $teal;
+		border-bottom: 2px solid lighten($teal, 20%);
+		@include single-transition(all, 0.2s, ease);
 		&:hover, &:active, &:focus {
+			color: $teal;
 			border-bottom: 2px solid $teal;
 		}
 	}
@@ -46,6 +88,16 @@ article {
 .second {
 	background: $teal;
 	color: $cream;
+	a {
+		color: lighten($cream, 7%);
+		text-decoration: none;
+		border-bottom: 2px solid lighten($cream, 7%);
+		@include single-transition(all, 0.2s, ease);
+		&:hover, &:active, &:focus {
+			color: $cream;
+			border-bottom: 2px solid $cream;
+		}
+	}
 }
 .third {
 	background: $cream;
