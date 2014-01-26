@@ -38,17 +38,15 @@ header {
 	color: $teal;
 	text-align: center;
 	line-height: 1;
-	padding: 5% 0 0;
+	padding: 8% 0 0;
 	h1 {
 		font-size: 24em;
 		margin: 0;
 	}
-	p {
-		font-size: 8em;
-	}
 }
 h2 {
-	font-size: 20em;
+	font-size: 18em;
+	line-height: 1;
 	text-align: center;
 	margin: 0;
 }
@@ -56,7 +54,7 @@ section {
 	margin-top: 25px;
 }
 article {
-	padding: 5% 10%;
+	padding: 10%;
 	p {
 		font-size: 4em;
 	}
@@ -65,10 +63,31 @@ img {
 	max-width: 100%;
 	height: auto;
 	margin: 0 auto;
+	border: 0;
+}
+figure {
+	margin: 0;
 }
 figcaption {
 	text-align: center;
 	font-style: italic;
+}
+hr {
+  border: 0;
+  height: 1px;
+  @include background(linear-gradient(left, 
+    rgba($teal,0),
+    rgba($teal,0.5),
+    rgba($teal,0)
+    )
+  );
+  margin: 35px 0;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+p.ancillary {
+	font-size: 8em;
+	text-align: center;
 }
 .first {
 	background: #fff;
@@ -87,7 +106,7 @@ figcaption {
 }
 .second {
 	background: $teal;
-	color: $cream;
+	color: #fff;
 	a {
 		color: lighten($cream, 7%);
 		text-decoration: none;
