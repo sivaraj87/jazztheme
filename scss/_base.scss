@@ -12,6 +12,7 @@ nav {
 	background: #fff;
 	top: 0;
 	left: 0;
+	z-index: 1;
 	ul {
 		list-style-type: none;
 		margin: 20px 0;
@@ -64,6 +65,10 @@ img {
 	height: auto;
 	margin: 0 auto;
 	border: 0;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+}
+a img {
+	@include hover;
 }
 figure {
 	margin: 0;
@@ -122,9 +127,37 @@ p.ancillary {
 	background: $cream;
 	color: $teal;
 }
+.three-and-a-half {
+	background: #fff;
+	color: $teal;
+	a {
+		color: $teal;
+		border-bottom: 2px solid $teal;
+		text-decoration: none;
+		@include single-transition(all, 0.2s, ease);
+		&:hover, &:active, &:focus {
+			color: lighten($teal, 20%);
+			border-bottom: 2px solid lighten($teal, 20%);
+		}
+	}
+	&:after {
+		content: "";
+	  display: table;
+	  clear: both;
+	}
+	p {
+		text-align: center;
+	}
+}
+.screenShots {
+	width: 31.333%;
+	float: left;
+	margin: 1%;
+}
 .fourth {
 	background: $ltGray;
 	color: $teal;
+	padding-bottom: 5%;
 }
 ol {
 	li {
@@ -138,4 +171,31 @@ footer {
 	color: $teal;
 	font-size: 4em;
 	text-align: center;
+}
+.contactForm {
+	text-align: center;
+	margin-top: 100px;
+}
+input,
+textarea {
+	margin: 10px 0;
+	padding: 10px 0;
+	background: #fff;
+	width: 500px;
+	text-align: center;
+	border: none;
+	outline: none;
+	font-size: 4em;
+}
+.submit input {
+	width: 150px;
+	color: #fff;
+	background: $teal;
+	border: 2px solid $teal;
+	@include single-transition(all, 0.2s, ease);
+	&:hover, &:active, &:focus {
+		background: #fff;
+		border: 2px solid #fff;
+		color: $teal;
+	}
 }
