@@ -1,5 +1,14 @@
 <?php get_header(); ?>
 
+  <article class="front-page">
+
+    <style>
+    .front-page {
+      background-color: <?php the_field('background-color'); ?>;
+      color: <?php the_field('color'); ?>;
+    }
+    </style>
+
     <?php
       $args = array(
         'post_type' => 'front_page',
@@ -13,10 +22,10 @@
     $front_page_loop = new WP_Query( $args );
     while ( $front_page_loop->have_posts() ) : $front_page_loop->the_post(); ?>
 
-  <article class="front-page" style="background-color: <?php the_field('background_color'); ?>; color: <?php the_field('color'); ?>;">
-
-    <h1><?php the_title(); ?></h1>
-    <p class="ancillary"><?php echo get_the_excerpt(); ?></p>
+    <header>
+      <h1><?php the_title(); ?></h1>
+      <?php the_excerpt(array('class' => 'ancillary')); ?>
+    </header>
 
     <?php the_content(); ?>
 
@@ -24,9 +33,9 @@
       the_post_thumbnail(array('class' => 'fancybox'));
         } ?>
 
-  </article>
-
     <?php  endwhile; ?>
     <?php wp_reset_postdata(); ?>
+
+  </article>
 
 <?php get_footer(); ?>

@@ -35,15 +35,13 @@ nav {
 	}
 }
 header {
-	background: #fff;
-	color: $teal;
+}
+h1 {
+	font-size: 24em;
+	margin: 0;
 	text-align: center;
 	line-height: 1;
 	padding: 8% 0 0;
-	h1 {
-		font-size: 24em;
-		margin: 0;
-	}
 }
 h2 {
 	font-size: 18em;
@@ -152,7 +150,7 @@ p.ancillary {
 		text-align: center;
 	}
 }
-.screenShots {
+.screen-shots {
 	width: 31.333%;
 	float: left;
 	margin: 1%;
@@ -175,7 +173,7 @@ footer {
 	font-size: 4em;
 	text-align: center;
 }
-.contactForm {
+.contact-form {
 	text-align: center;
 	margin-top: 100px;
 }
