@@ -1,41 +1,21 @@
-<?php get_header(); ?>
+<?php get_header(); the_post(); ?>
 
-  <article class="front-page">
-
-    <style>
-    .front-page {
-      background-color: <?php the_field('background-color'); ?>;
-      color: <?php the_field('color'); ?>;
-    }
-    </style>
-
-    <?php
-      $args = array(
-        'post_type' => 'front_page',
-        'post_status' => 'publish',
-        'showposts' => -1,
-        'meta_key' => 'article_order',
-        'orderby' => 'meta_value_num',
-        'order' => 'ASC'
-      );
-
-    $front_page_loop = new WP_Query( $args );
-    while ( $front_page_loop->have_posts() ) : $front_page_loop->the_post(); ?>
+  <section>
 
     <header>
       <h1><?php the_title(); ?></h1>
-      <?php the_excerpt(array('class' => 'ancillary')); ?>
     </header>
 
-    <?php the_content(); ?>
+      <article class="grid-2-3">
 
-    <?php if ( has_post_thumbnail() ) {
-      the_post_thumbnail(array('class' => 'fancybox'));
-        } ?>
+        <p>Posted on <time datetime="<?php the_time( 'Y-m-d' ); ?>" pubdate><?php the_time( 'F j, Y' ); ?></time> in <?php the_category(','); ?>. <?php the_tags( 'Tagged: ', ' • ' ); ?></p>
 
-    <?php  endwhile; ?>
-    <?php wp_reset_postdata(); ?>
+        <?php the_content(); ?>
 
-  </article>
+      </article>
+
+    <?php get_sidebar(); ?>
+
+  </section>
 
 <?php get_footer(); ?>

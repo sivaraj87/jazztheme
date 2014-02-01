@@ -12,8 +12,9 @@
     <![endif]-->
     <?php wp_head(); ?>
   </head>
+
     <body <?php body_class(); ?>>
-      <nav>
-        <?php wp_nav_menu(); ?>
+
+      <nav class="main-nav">
+        <?php wp_nav_menu(array('menu' => 'Main Menu' , 'container' => '' )); ?>
       </nav>
-        <section>

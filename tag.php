@@ -1,41 +1,36 @@
-<?php get_header(); ?>
+<?php 
+  get_header(); 
+  global $query_string;
+  query_posts( $query_string . '&showposts=-1' );
+?>
 
-  <article class="front-page">
-
-    <style>
-    .front-page {
-      background-color: <?php the_field('background-color'); ?>;
-      color: <?php the_field('color'); ?>;
-    }
-    </style>
-
-    <?php
-      $args = array(
-        'post_type' => 'front_page',
-        'post_status' => 'publish',
-        'showposts' => -1,
-        'meta_key' => 'article_order',
-        'orderby' => 'meta_value_num',
-        'order' => 'ASC'
-      );
-
-    $front_page_loop = new WP_Query( $args );
-    while ( $front_page_loop->have_posts() ) : $front_page_loop->the_post(); ?>
+  <section>
 
     <header>
-      <h1><?php the_title(); ?></h1>
-      <?php the_excerpt(array('class' => 'ancillary')); ?>
+      <h1>Tag: <?php single_tag_title(); ?></h1>
     </header>
 
-    <?php the_content(); ?>
+    <div class="grid-2-3">
 
-    <?php if ( has_post_thumbnail() ) {
-      the_post_thumbnail(array('class' => 'fancybox'));
-        } ?>
+        <?php while ( have_posts() ) : the_post(); ?>
 
-    <?php  endwhile; ?>
-    <?php wp_reset_postdata(); ?>
+          <article class="archive-view">
 
-  </article>
+            <h2 class="h1"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+            <p>Posted on <time datetime="<?php the_time( 'Y-m-d' ); ?>" pubdate><?php the_time( 'F j, Y' ); ?></time></p>
+
+            <?php the_excerpt(); ?>
+
+            <p><a href="<?php the_permalink(); ?>">More &rarr;</a></p>
+
+          </article>
+
+      <?php endwhile; ?>
+
+    </div>
+
+    <?php get_sidebar(); ?>
+
+  </section>
 
 <?php get_footer(); ?>

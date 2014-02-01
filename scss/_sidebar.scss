@@ -1,0 +1,39 @@
+/* Main Sidebar Styles */
+aside {
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		li {
+			text-align: center;
+			margin: 5% 0;
+			a {
+				font-size: 4em;
+				border-bottom: none;
+				&:hover, &:active, &:focus {
+					border-bottom: none;
+				}
+			}
+		}
+	}
+}
+
+/* Tag Cloud Styles */
+.tagcloud {
+	a {
+		font-size: 4em !important;
+		border-bottom: none;
+		margin: 0 5px;
+		&:hover, &:active, &:focus {
+			border-bottom: none;
+		}
+		&:after {
+			content: "•";
+			color: $teal;
+			margin-left: 10px;
+		}
+		&:last-child:after {
+			content: "";
+		}
+	}
+}

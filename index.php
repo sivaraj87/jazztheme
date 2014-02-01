@@ -1,5 +1,11 @@
 <?php get_header(); ?>
 
+  <section>
+
+    <header class="screen-reader-text">
+      <h1><?php bloginfo('name'); ?></h1>
+    </header>
+
     <?php
       $args = array(
         'post_type' => 'front_page',
@@ -10,23 +16,21 @@
         'order' => 'ASC'
       );
 
-    $front_page_loop = new WP_Query( $args );
-    while ( $front_page_loop->have_posts() ) : $front_page_loop->the_post(); ?>
+      $front_page_loop = new WP_Query( $args );
+      while ( $front_page_loop->have_posts() ) : $front_page_loop->the_post(); ?>
 
-  <article class="front-page" style="background-color: <?php the_field('background_color'); ?>; color: <?php the_field('color'); ?>;">
+      <article style="background-color: <?php the_field('background_color'); ?>; color: <?php the_field('color'); ?>;">
 
-    <h1><?php the_title(); ?></h1>
-    <p class="ancillary"><?php echo get_the_excerpt(); ?></p>
+        <h2 class="h1"><?php the_title(); ?></h2>
+        <p class="ancillary"><?php the_field( 'header_text' ); ?></p>
 
-    <?php the_content(); ?>
+        <?php the_content(); ?>
 
-    <?php if ( has_post_thumbnail() ) {
-      the_post_thumbnail(array('class' => 'fancybox'));
-        } ?>
-
-  </article>
+      </article>
 
     <?php  endwhile; ?>
     <?php wp_reset_postdata(); ?>
+
+  </section>
 
 <?php get_footer(); ?>

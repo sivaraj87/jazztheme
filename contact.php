@@ -1,6 +1,15 @@
-<?php get_header(); ?>
+<?php 
+/*
+
+Template Name: Contact Page
+
+*/
+get_header(); the_post(); ?>
 
           <article id="contact" class="fourth">
+
+            <?php the_content(); ?>
+
             <h2>Contact</h2>
             <p class="ancillary">What we need to start.</p>
             <ol>

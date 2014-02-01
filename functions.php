@@ -32,7 +32,7 @@ function register_front_page() {
     'hierarchical'          => false,
     'menu_position'         => null,
     'rewrite'               => array('slug' => 'front-page'),
-    'supports'           		=> array( 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' )
+    'supports'           		=> array( 'title', 'editor', 'custom-fields' )
   ); 
 
 	register_post_type( 'front_page' , $args );
@@ -115,19 +115,8 @@ if(function_exists("register_field_group"))
   }
     add_action( 'init', 'register_my_menu' );
 
-  //Edit the Excerpt Length & String
-  function custom_excerpt_length( $length ) {
-    return 25;
-  }
-    add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
-
-  function new_excerpt_more( $more ) {
-    return '...';
-  }
-    add_filter('excerpt_more', 'new_excerpt_more');
-
-  //Hide Admin Bar
-    add_filter('show_admin_bar', '__return_false');
+  // Hide Admin Bar
+  add_filter('show_admin_bar', '__return_false');
 
   // Load jQuery
   if ( !is_admin() ) {
@@ -135,10 +124,6 @@ if(function_exists("register_field_group"))
     wp_deregister_script('jquery');
     wp_register_script('jquery', "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js");
     wp_enqueue_script('jquery');
-
-    wp_deregister_script('easing');
-    wp_register_script('easing', get_bloginfo('template_url') . "/js/easing.min.js");
-    wp_enqueue_script('easing');
 
     wp_deregister_script('fancybox');
     wp_register_script('fancybox', get_bloginfo('template_url') . "/js/fancybox.min.js");
@@ -149,7 +134,23 @@ if(function_exists("register_field_group"))
     wp_enqueue_script('global');
   }
 
-  //Featured Images
-    add_theme_support( 'post-thumbnails' );
+  // Sidebar
+  $side = array(
+    'name'          => __( 'Post & Page Sidebar' ),
+    'id'            => 'post-page-sidebar',
+    'description'   => 'A sidebar for posts & pages. Or both.',
+    'class'         => '',
+    'before_widget' => '<li id="%1$s" class="widget %2$s">',
+    'after_widget'  => '</li>',
+    'before_title'  => '<h2 class="widgettitle">',
+    'after_title'   => '</h2>' );
+
+  register_sidebar( $side );
+
+  // Edit the Excerpt Length & String
+  function new_excerpt_more( $more ) {
+    return '...';
+  }
+  add_filter('excerpt_more', 'new_excerpt_more');
 
  ?>

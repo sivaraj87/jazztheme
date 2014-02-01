@@ -1,41 +1,27 @@
-<?php get_header(); ?>
+<?php 
+/*
 
-  <article class="front-page">
+Template Name: Page with Sidebar
 
-    <style>
-    .front-page {
-      background-color: <?php the_field('background-color'); ?>;
-      color: <?php the_field('color'); ?>;
-    }
-    </style>
+*/
+get_header(); the_post(); ?>
 
-    <?php
-      $args = array(
-        'post_type' => 'front_page',
-        'post_status' => 'publish',
-        'showposts' => -1,
-        'meta_key' => 'article_order',
-        'orderby' => 'meta_value_num',
-        'order' => 'ASC'
-      );
+  <section>
 
-    $front_page_loop = new WP_Query( $args );
-    while ( $front_page_loop->have_posts() ) : $front_page_loop->the_post(); ?>
+  	<header>
+  		<h1><?php the_title(); ?></h1>
+  	</header>
 
-    <header>
-      <h1><?php the_title(); ?></h1>
-      <?php the_excerpt(array('class' => 'ancillary')); ?>
-    </header>
+  	<article class="grid-2-3">
 
-    <?php the_content(); ?>
+      <p class="ancillary"><?php the_field( 'header_text' ); ?></p>
 
-    <?php if ( has_post_thumbnail() ) {
-      the_post_thumbnail(array('class' => 'fancybox'));
-        } ?>
+      <?php the_content(); ?>
 
-    <?php  endwhile; ?>
-    <?php wp_reset_postdata(); ?>
+    </article>
 
-  </article>
+    <?php get_sidebar(); ?>
+
+  </section>
 
 <?php get_footer(); ?>

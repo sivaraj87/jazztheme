@@ -1,6 +1,5 @@
-        </section>
       <footer>
-        <p>Copyright &copy; <?php echo date('Y'); ?> Wikipedia Geeks</p>
+        <p>Copyright &copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></p>
       </footer>
 
     <?php wp_footer(); ?>
