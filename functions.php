@@ -39,6 +39,8 @@ function register_front_page() {
 };
 
 // Custom Field Groups for the Front Page
+define( 'ACF_LITE' , true );
+include_once('advanced-custom-fields/acf.php');
 if(function_exists("register_field_group"))
   {
     register_field_group(array (
@@ -108,6 +110,83 @@ if(function_exists("register_field_group"))
       'menu_order' => 0,
     ));
   }
+
+  if(function_exists("register_field_group"))
+    {
+      register_field_group(array (
+        'id' => 'acf_header-text',
+        'title' => 'Header Text',
+        'fields' => array (
+          array (
+            'key' => 'field_52ef2235d7cfe',
+            'label' => 'Header Text',
+            'name' => 'header_text',
+            'type' => 'text',
+            'instructions' => 'Add secondary text, just beneath the header.',
+            'default_value' => '',
+            'placeholder' => '',
+            'prepend' => '',
+            'append' => '',
+            'formatting' => 'html',
+            'maxlength' => '',
+          ),
+        ),
+        'location' => array (
+          array (
+            array (
+              'param' => 'post_type',
+              'operator' => '==',
+              'value' => 'post',
+              'order_no' => 0,
+              'group_no' => 0,
+            ),
+          ),
+          array (
+            array (
+              'param' => 'post_type',
+              'operator' => '==',
+              'value' => 'front_page',
+              'order_no' => 0,
+              'group_no' => 1,
+            ),
+          ),
+          array (
+            array (
+              'param' => 'page_template',
+              'operator' => '==',
+              'value' => 'default',
+              'order_no' => 0,
+              'group_no' => 2,
+            ),
+          ),
+          array (
+            array (
+              'param' => 'page_template',
+              'operator' => '==',
+              'value' => 'page-no-sidebar.php',
+              'order_no' => 0,
+              'group_no' => 3,
+            ),
+          ),
+          array (
+            array (
+              'param' => 'page_template',
+              'operator' => '==',
+              'value' => 'page.php',
+              'order_no' => 0,
+              'group_no' => 4,
+            ),
+          ),
+        ),
+        'options' => array (
+          'position' => 'normal',
+          'layout' => 'default',
+          'hide_on_screen' => array (
+          ),
+        ),
+        'menu_order' => 0,
+      ));
+    }
 
   // Register Main Menu
   function register_my_menu() {

@@ -16,6 +16,10 @@
 
     <?php get_sidebar(); ?>
 
+  <div class="comments">
+    <?php comments_template(); ?>
+  </div>
+
   </section>
 
 <?php get_footer(); ?>

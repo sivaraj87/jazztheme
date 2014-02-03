@@ -142,6 +142,14 @@ img {
 	}
 }
 
+/* Images in Posts & Pages */
+img.alignright {float:right; margin:0 0 1em 1em}
+img.alignleft {float:left; margin:0 1em 1em 0}
+img.aligncenter {display: block; margin-left: auto; margin-right: auto}
+a img.alignright {float:right; margin:0 0 1em 1em}
+a img.alignleft {float:left; margin:0 1em 1em 0}
+a img.aligncenter {display: block; margin-left: auto; margin-right: auto}
+
 /* Horizontal Rule */
 hr {
   border: 0;
@@ -166,33 +174,38 @@ ol {
 	}
 }
 
+/* Preformatted Code */
+pre, code {
+	background: rgba(0,0,0,0.05);
+  font-family: Monaco, Consolas, "Lucida Console", monospace;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow: auto;
+  margin: 0 auto;
+  padding: 25px;
+  border-radius: 10px;
+  @media (max-width: 1024px) {
+    width: 100%;
+    font-size: 14px;
+  }
+}
+code {
+  padding: 5px;
+  vertical-align: 3px;
+  white-space: nowrap;
+}
+
 /* Contact Form */
-.contact-form {
-	text-align: center;
-	margin-top: 100px;
+.wufoo {
+	width: 66.667%;
+	margin: 0 auto;
 }
-input,
-textarea {
-	margin: 10px 0;
-	padding: 10px 0;
-	background: #fff;
-	width: 500px;
-	text-align: center;
-	border: none;
-	outline: none;
-	font-size: 4em;
-}
-.submit input {
-	width: 150px;
-	color: #fff;
-	background: $teal;
-	border: 2px solid $teal;
-	@include single-transition(all, 0.2s, ease);
-	&:hover, &:active, &:focus {
-		background: #fff;
-		border: 2px solid #fff;
-		color: $teal;
-	}
+
+/* Comments */
+.comments {
+	clear: both;
+	width: 50%;
+	padding-left: 10%;
 }
 
 /* Footer */
