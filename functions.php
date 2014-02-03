@@ -136,15 +136,6 @@ if(function_exists("register_field_group"))
             array (
               'param' => 'post_type',
               'operator' => '==',
-              'value' => 'post',
-              'order_no' => 0,
-              'group_no' => 0,
-            ),
-          ),
-          array (
-            array (
-              'param' => 'post_type',
-              'operator' => '==',
               'value' => 'front_page',
               'order_no' => 0,
               'group_no' => 1,
