@@ -1,4 +1,4 @@
-paganinijazz
+Paganini Jazz
 ============
 
-Free WordPress Theme
+A Free WordPress Theme

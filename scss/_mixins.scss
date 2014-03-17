@@ -1,20 +1,13 @@
 // Colors
-$teal: #343f4f;
-$cream: #f0e4d8;
-$gray: #b0aaa6;
-$ltGray: #bab5ae;
+$teal: #a3bcb7;
+$dkTeal: #50725e;
+$berry: #b8829b;
+$tan: #c4c09e;
+$blue: #516792;
 
 // Compass
 // @include single-transition(all, 0.3s, ease);
 // @include box-shadow(0 1px 0 rgba(0,0,0,0.15));
-
-// Hover
-@mixin hover {
-	opacity: 1;
-	&:hover, &:active, &:focus {
-		opacity: 0.75;
-	}
-}
 
 // Grid
 @mixin grid-2-3 {

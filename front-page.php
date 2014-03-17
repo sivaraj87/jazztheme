@@ -11,22 +11,21 @@
         'post_type' => 'front_page',
         'post_status' => 'publish',
         'showposts' => -1,
-        'meta_key' => 'article_order',
-        'orderby' => 'meta_value_num',
-        'order' => 'ASC'
       );
 
       $front_page_loop = new WP_Query( $args );
       while ( $front_page_loop->have_posts() ) : $front_page_loop->the_post(); ?>
 
-      <article style="background-color: <?php the_field('background_color'); ?>; color: <?php the_field('color'); ?>;">
+      <article id="<?php post_name(); ?>" style="background-color: <?php the_field('background_color'); ?>; color: <?php the_field('color'); ?>;">
 
         <h2 class="h1"><?php the_title(); ?></h2>
-        <p class="ancillary"><?php the_field( 'header_text' ); ?></p>
+        <h3 class="ancillary"><?php the_field( 'header_text' ); ?></h3>
 
         <?php the_content(); ?>
 
       </article>
+
+      <?php the_field('bg_image'); ?>
 
     <?php  endwhile; ?>
     <?php wp_reset_postdata(); ?>

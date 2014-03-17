@@ -1,5 +1,26 @@
 <?php 
 
+// Add class and rel to WP Image Galleries
+add_filter('wp_get_attachment_link', 'rc_add_rel_attribute');
+
+  function rc_add_rel_attribute($link) {
+    global $post;
+    return str_replace('<a href', '<a class="fancybox" rel="gallery" href', $link);
+  }
+
+// Current Page URL
+function curPageURL() {
+  $pageURL = 'http';
+  if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
+    $pageURL .= "://";
+  if ($_SERVER["SERVER_PORT"] != "80") {
+    $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+  } else {
+    $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+  }
+  return $pageURL;
+}
+
 // Custom Post Type for Front Page Articles
 add_action('init', 'register_front_page');
 
@@ -39,7 +60,7 @@ function register_front_page() {
 };
 
 // Custom Field Groups for the Front Page
-define( 'ACF_LITE' , true );
+//define( 'ACF_LITE' , true );
 include_once('advanced-custom-fields/acf.php');
 if(function_exists("register_field_group"))
   {
@@ -62,21 +83,6 @@ if(function_exists("register_field_group"))
           'type' => 'color_picker',
           'instructions' => 'Choose a color for your typography.',
           'default_value' => '#343f4f',
-        ),
-        array (
-          'key' => 'field_52e875841210b',
-          'label' => 'Article Order',
-          'name' => 'article_order',
-          'type' => 'number',
-          'instructions' => 'Choose the article display order. "1" comes first, "2" will be second, etc.',
-          'required' => 1,
-          'default_value' => '',
-          'placeholder' => '',
-          'prepend' => '',
-          'append' => '',
-          'min' => 1,
-          'max' => '',
-          'step' => 1,
         ),
       ),
       'location' => array (
@@ -192,8 +198,12 @@ if(function_exists("register_field_group"))
   if ( !is_admin() ) {
 
     wp_deregister_script('jquery');
-    wp_register_script('jquery', "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js");
+    wp_register_script('jquery', "//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js");
     wp_enqueue_script('jquery');
+
+    wp_deregister_script('easing');
+    wp_register_script('easing', get_bloginfo('template_url') . "/js/easing.min.js");
+    wp_enqueue_script('easing');
 
     wp_deregister_script('fancybox');
     wp_register_script('fancybox', get_bloginfo('template_url') . "/js/fancybox.min.js");
@@ -222,5 +232,25 @@ if(function_exists("register_field_group"))
     return '...';
   }
   add_filter('excerpt_more', 'new_excerpt_more');
+
+  //Sanatized Version of the Post Title
+  function post_name() {
+    global $post;
+    $title = sanitize_title($post->post_title);
+    echo $title;
+  }
+
+  // Attach a class to linked images' parent anchors
+  function give_linked_images_class($html, $id, $caption, $title, $align, $url, $size, $alt = '' ){
+    $classes = 'fancybox';
+
+    if ( preg_match('/<a.*? class=".*?">/', $html) ) {
+      $html = preg_replace('/(<a.*? class=".*?)(".*?>)/', '$1 ' . $classes . '$2', $html);
+    } else {
+      $html = preg_replace('/(<a.*?)>/', '$1 class="' . $classes . '" >', $html);
+    }
+    return $html;
+  }
+  add_filter('image_send_to_editor','give_linked_images_class',10,8);
 
  ?>
