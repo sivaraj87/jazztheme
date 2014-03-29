@@ -1,4 +1,4 @@
-<ul class="sharingButtons">
+<ul class="sharing-buttons">
 	<li><!-- Facebook -->
 		<div class="fb-like" data-href="<?php echo curPageURL(); ?>" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
 		<div id="fb-root"></div>

@@ -2,33 +2,27 @@
 
   <section>
 
-    <header class="screen-reader-text">
-      <h1><?php bloginfo('name'); ?></h1>
-    </header>
+    <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-    <?php
-      $args = array(
-        'post_type' => 'front_page',
-        'post_status' => 'publish',
-        'showposts' => -1,
-      );
+      <article style="
+        background-color:<?php the_field('bg_color'); ?>;
+        color:<?php the_field('font_color'); ?>;
+      ">
 
-      $front_page_loop = new WP_Query( $args );
-      while ( $front_page_loop->have_posts() ) : $front_page_loop->the_post(); ?>
+        <h1><?php the_title(); ?></h2>
 
-      <article id="<?php post_name(); ?>" style="background-color: <?php the_field('background_color'); ?>; color: <?php the_field('color'); ?>;">
+        <p>Posted on <time datetime="<?php the_time( 'Y-m-d' ); ?>" pubdate><?php the_time( 'F j, Y' ); ?></time> by <?php the_author_posts_link(); ?></p>
 
-        <h2 class="h1"><?php the_title(); ?></h2>
-        <h3 class="ancillary"><?php the_field( 'header_text' ); ?></h3>
+        <p>Category: <?php the_category(','); ?> | <?php the_tags( 'Tagged: ', ' • ' ); ?> | <?php comments_number(); ?></p>
 
-        <?php the_content(); ?>
+        <?php the_excerpt(); ?>
+
+        <p><a href="<?php the_permalink(); ?>">Read More &gt;&gt;</a><p>
 
       </article>
 
-      <?php the_field('bg_image'); ?>
-
-    <?php  endwhile; ?>
-    <?php wp_reset_postdata(); ?>
+    <?php endwhile; else: ?>
+    <?php endif; ?>
 
   </section>
 

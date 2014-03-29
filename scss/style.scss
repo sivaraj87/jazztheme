@@ -1,0 +1,17 @@
+/*!
+ Theme Name:   Jazz Theme
+ Theme URI:    http://themehoney.com/jazz
+ Description:  A minimalist theme with pages, a blog, and scrolling front page.
+ Author:       Angela J. Holden
+ Author URI:   http://angelajholden.com
+ Template:     jazz
+ Version:      1.0
+*/
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,400italic);
+@import "compass/css3";
+@import "mixins";
+@import "base";
+@import "normalize";
+@import "sidebar";
+@import "comments";
+@import "fancybox";

@@ -14,8 +14,6 @@ get_header(); the_post(); ?>
 
   	<article class="grid-2-3">
 
-      <p class="ancillary"><?php the_field( 'header_text' ); ?></p>
-
       <?php the_content(); ?>
 
     </article>

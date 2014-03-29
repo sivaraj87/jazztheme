@@ -8,7 +8,9 @@
 
       <article class="grid-2-3">
 
-        <p>Posted on <time datetime="<?php the_time( 'Y-m-d' ); ?>" pubdate><?php the_time( 'F j, Y' ); ?></time> in <?php the_category(','); ?>. <?php the_tags( 'Tagged: ', ' • ' ); ?></p>
+        <p>Posted on <time datetime="<?php the_time( 'Y-m-d' ); ?>" pubdate><?php the_time( 'F j, Y' ); ?></time> by <?php get_the_author(); ?></p>
+
+        <p>Category: <?php the_category(','); ?> | <?php the_tags( 'Tagged: ', ' • ' ); ?> | <?php comments_number( '% comments' ); ?></p>
 
         <?php the_content(); ?>
 

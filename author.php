@@ -7,7 +7,7 @@
   <section>
 
     <header>
-      <h1><?php single_tag_title(); ?></h1>
+      <h1><?php the_author(); ?></h1>
     </header>
 
       <div class="grid-2-3">
